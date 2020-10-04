@@ -1,0 +1,7 @@
+{
+  "name": "testapis",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
