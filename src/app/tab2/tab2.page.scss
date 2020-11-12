@@ -1,0 +1,9 @@
+#tab2 .list-group-item{
+    display:flex;
+}
+#tab2 .list-group-item>div:nth-child(1){
+    width:10%;
+}
+#tab2 .list-group-item>div:nth-child(2){
+    width:90%;
+}

@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <div class="d-flex text-white pl-2 pr-2">
+      <div class="pointer d-flex align-items-center"  onclick="openNav()">
+        <ion-icon name="reorder-four-outline" ></ion-icon>
+      </div>
+    <ion-title [routerLink]="['/']" class="pointer">IONIC</ion-title>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content id="login">
+  <div class="navmenu" >
+    <div class="themenu"><app-menu></app-menu></div>
+    <div class="thevoid pointer" onclick="closeNav()"></div>
+  </div>
+
+  <div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item" *ngFor="let item of infos">
+        <div>
+          <span class="font-weight-bold">Nom</span>: {{item[0]}}
+        </div>
+        <div>
+          <span class="font-weight-bold">Email</span>: {{item[1]}}
+        </div>
+        <div>
+          <span class="font-weight-bold">Société</span>: {{item[2]}}
+        </div>
+        <div>
+          <span class="font-weight-bold">Siren</span>: {{item[3]}}
+        </div>
+        <div>
+          <span class="font-weight-bold">Activités</span>: {{item[4]}}
+        </div>
+      </li>
+    </ul>
+  </div>
+</ion-content>

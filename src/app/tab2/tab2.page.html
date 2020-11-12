@@ -1,17 +1,27 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 2
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
+<ion-content [fullscreen]="true"  id="tab2">
+  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-title size="large">Tramway</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+  <div class="content">
+    <ion-item class="mb-4">
+      <ion-label>Ligne</ion-label>
+      <ion-select value="notifications" interface="action-sheet" name="line" id="line" #line (ionChange)="searchLigne(line)">
+        <ion-select-option value="{{item}}" *ngFor="let item of lines">{{item}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item" *ngFor="let item of infos;">
+        <div class="number font-weight-bold">
+          {{item["line"]}}
+        </div>
+        <div>
+          <div>{{item["title"]}}</div>
+          <div class="text-secondary">{{item["message"]}}</div>
+        </div>
+      </li>
+    </ul>
+  </div>
 </ion-content>
