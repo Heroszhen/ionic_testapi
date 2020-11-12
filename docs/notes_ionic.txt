@@ -1,0 +1,95 @@
+﻿ionic 5
+
+---installation
+ionic start demotabs tabs --type=angular --capacitor
+ionic serve
+
+---capacitor
+définition : créer des NPWA (des PWA en natif)
+https://www.numendo.com/blog/front/capacitor-ionic/
+
+/*
+---guard
+ionic g guard login --implements CanLoad
+->check if we have the right to load one page
+in app-routing.module.ts:
+{
+    path: 'login',
+    loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule),
+    canLoad:[LoginGuard]
+  },*/
+
+---IonSlides
+import { IonSlides } from '@ionic/angular';
+
+login
+https://www.youtube.com/watch?v=RuuOdfz9Kxc&t=443s
+
+dadi It ying
+https://www.bilibili.com/video/BV1Ub41117q5?from=search&seid=17489877566742208621
+
+---page
+la logique est écrite dans ngOnInit
+
+
+---tab
+ionic g page tab4
+
+app-routing.module.ts: enlever la route
+
+tabs-routing.module.ts: 
+ {
+        path: 'tab4',
+        loadChildren: () => import('../tab4/tab4.module').then( m => m.Tab4PageModule)
+      },
+
+tabs.page.html:
+<ion-tab-button tab="tab4">
+      <ion-icon name="cloud-outline"></ion-icon>
+      <ion-label>Tab 4</ion-label>
+    </ion-tab-button>
+
+---page(module) vs component
+component est réutilisable dans des pages
+
+1)créer un component réutilisable dans une page(module)
+ionic g module slider
+ionic g component slider
+il faut transformer component en module pour que ca puisse être importé dans plusieurs pages
+
+import SliderComponent dans slider.module.ts et l'exporter:
+import { SliderComponent } from './slider.component';
+@NgModule({
+  declarations: [SliderComponent],
+  imports: [
+    CommonModule
+  ],
+  exports:[SliderComponent]
+})
+export class SliderModule { }
+
+import SliderModule dans login.module.ts : 
+import { SliderModule } from '../../modules/slider/slider.module';
+@NgModule({
+  imports: [
+    CommonModule,
+    FormsModule,
+    IonicModule,
+    LoginPageRoutingModule,
+    SliderModule
+  ],
+  declarations: [LoginPage]
+})
+export class LoginPageModule {}
+
+
+---cycle de vie
+http://www.ionic.wang/article-index-id-169.html
+ionViewWillEnter —当进入一个页面时触发(如果它从堆栈返回)
+ionViewDidEnter —进入后触发
+ionViewWillLeave —如果页面将离开触发
+ionViewDidLeave — 在页面离开后触发
+ionViewWillUnload — 在Angular中没有触发，因为这里你必须使用ngOnDestroy
+
+
+6985721992056270353
